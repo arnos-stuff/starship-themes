@@ -1,0 +1,352 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+command_timeout = 100
+scan_timeout = 1
+
+
+palette = 'neon'
+
+format = """\
+$singularity\
+$kubernetes\
+$directory\
+$vcsh\
+$fossil_branch\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$hg_branch\
+$pijul_channel\
+$docker_context\
+$package\
+$username\
+$c\
+$cmake\
+$cobol\
+$daml\
+$dart\
+$deno\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$fennel\
+$golang\
+$guix_shell\
+$haskell\
+$haxe\
+$helm\
+$java\
+$julia\
+$kotlin\
+$gradle\
+$lua\
+$nim\
+$nodejs\
+$ocaml\
+$opa\
+$perl\
+$php\
+$pulumi\
+$purescript\
+$python\
+$raku\
+$rlang\
+$red\
+$ruby\
+$rust\
+$scala\
+$swift\
+$terraform\
+$vlang\
+$vagrant\
+$zig\
+$buf\
+$nix_shell\
+$conda\
+$meson\
+$spack\
+$memory_usage\
+$aws\
+$gcloud\
+$openstack\
+$azure\
+$env_var\
+$crystal\
+$custom\
+$sudo\
+$cmd_duration\
+$line_break\
+$jobs\
+$battery\
+$time\
+$status\
+$os\
+$container\
+$shell\
+$hostname\
+$localip\
+$shlvl\
+ [#](fg:neon_pink)[#](fg:intense_bpink)[#](fg:blue_purple)  \
+ [G](fg:neon_pink)[G](fg:intense_bpink)[G](fg:blue_purple) - [GO](fg:blue_purple)[!](fg:icy_cyan) $character """
+
+
+[character] # The name of the module we are configuring is 'character'
+format = '[ ==>](fg:icy_cyan)'
+success_symbol = '[ ==>](bold green)'
+error_symbol = '[ ==>](bold red)'
+
+[directory]
+use_os_path_sep = false
+
+truncation_symbol = "##/"
+truncation_length = 3
+truncate_to_repo = false
+repo_root_style = "bold fg:intense_bpink"
+repo_root_format = """\
+[📫 ](fg:neon_pink) \
+[$before_root_path]($before_repo_root_style)\
+[$repo_root]($repo_root_style)\
+[$path]($style)\
+[$read_only]($read_only_style) \
+[@](fg:intense_bpink)[@](fg:deep_purple)"""
+style = "bold fg:mauve"
+
+format = """\
+[📫 ](fg:neon_pink) \
+[$path]($style)[$read_only]($read_only_style) \
+[@](fg:neon_pink)[@](fg:intense_mauve) [|](fg:icy_cyan) """
+
+[directory.substitutions]
+style = 'fg:neon_pink'
+'~/Documents/code' = '⋆⋆/🤖'
+'~/Downloads' = '⋆⋆/📦'
+'~/Documents/Work' = '⋆⋆/💸'
+'C:/' = '/'
+'~/code' = '⋆⋆/🤖'
+'~/code/apps' = '⋆⋆/🤖:📱'
+'docker' = '🐳'
+'unix:///run/user/' = '🔌'
+'com.github' = '🐙'
+
+
+[aws]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol($profile)(\($region\))([  at ](fg:neon_pink) $duration [@](fg:neon_pink)[@](fg:intense_mauve))]($style) '
+symbol = '☁️ '
+
+[bun]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol($version)]($style) '
+
+[c]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol($version(-$name))]($style) '
+
+[cmake]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol($version)]($style) '
+
+[cmd_duration]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [🕛 $duration]($style) '
+
+[cobol]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol($version)]($style) '
+
+[conda]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol$environment]($style) '
+
+[crystal]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol($version)]($style) '
+
+[daml]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol($version)]($style) '
+
+[dart]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol($version)]($style) '
+
+[deno]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol($version)]($style) '
+
+[docker_context]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol$context]($style) '
+
+
+[dotnet]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol($version)(🎯 $tfm)]($style) '
+
+[elixir]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol($version \(OTP $otp_version\))]($style) '
+
+[elm]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol($version)]($style) '
+
+[erlang]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol($version)]($style) '
+
+[fennel]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol($version)]($style) '
+
+[fossil_branch]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol$branch]($style) '
+
+[gcloud]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol([  at ](fg:neon_pink)[$domain](fg:intense_bpink)) [-](fg:icy_cyan) [$account](fg:blue_purple)(\($region\))]($style) '
+symbol = '☁️ '
+
+[git_branch]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol$branch]($style) '
+
+[git_status]
+format = '([[@](fg:neon_pink) $all_status$ahead_behind [@](fg:neon_pink)[@](fg:intense_mauve)]($style))'
+
+[golang]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol($version)]($style) '
+
+[gradle]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol($version)]($style) '
+
+[guix_shell]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol]($style) '
+
+[haskell]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol($version)]($style) '
+
+[haxe]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol($version)]($style) '
+
+[helm]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol($version)]($style) '
+
+[hg_branch]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol$branch]($style) '
+
+[java]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol($version)]($style) '
+
+[julia]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol($version)]($style) '
+
+[kotlin]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol($version)]($style) '
+
+[kubernetes]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol$context( \($namespace\))]($style) '
+
+[lua]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol($version)]($style) '
+
+[memory_usage]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) $symbol[$ram( | $swap)]($style) '
+
+[meson]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol$project]($style) '
+
+[nim]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol($version)]($style) '
+
+[nix_shell]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol$state( \($name\))]($style) '
+
+[nodejs]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol($version)]($style) '
+symbol = '[⬢ n ](fg:green)'
+
+[ocaml]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol($version)(\($switch_indicator$switch_name\))]($style) '
+
+[opa]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol($version)]($style) '
+
+[openstack]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol$cloud(\($project\))]($style) '
+
+[os]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol]($style) '
+
+[package]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol$version]($style) '
+
+[perl]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol($version)]($style) '
+
+[php]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol($version)]($style) '
+
+[pijul_channel]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol$channel]($style) '
+
+[pulumi]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol$stack]($style) '
+
+[purescript]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol($version)]($style) '
+
+[python]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style) '
+
+[raku]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol($version-$vm_version)]($style) '
+
+[red]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol($version)]($style) '
+
+[ruby]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol($version)]($style) '
+
+[rust]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol($version)]($style) '
+
+[scala]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol($version)]($style) '
+
+[spack]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol$environment]($style) '
+
+[sudo]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [as $symbol] '
+
+
+[swift]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol($version)]($style) '
+
+[terraform]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol$workspace]($style) '
+
+[time]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$time]($style) '
+
+[username]
+format = """\
+[[\\(](fg:icy_cyan) [as @](fg:neon_pink)$user]($style) [\\)](fg:icy_cyan) \
+[-](fg:icy_cyan)[-](fg:neon_pink)[-](fg:icy_cyan)"""
+style_user = 'fg:dimmed_mauve'
+style_root = 'bold fg:intense_mauve'
+
+[vagrant]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol($version)]($style) '
+
+[vlang]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol($version)]($style) '
+
+[zig]
+format = '[@](fg:intense_mauve)[@](fg:neon_pink) [$symbol($version)]($style) '
+[buf]
+format = '(with [$symbol$version ]($style))'
+
+
+[palettes.neon]
+dark_purple = "#8c05e6"
+neon_pink = "#eb27f5"
+icy_cyan = "#70eeee"
+pale_pink = "#bd6ee4"
+punchy_pink = "#af4dff"
+blue_purple = "#682dfc"
+blue_slight_purple = "#584dff"
+blue_bright_purple = "#4d35fc"
+pale_bluepurple = "#724ecc"
+med_bpink = "#7342fc"
+intense_bpink = "#8a05ff"
+intense_rpink = "#fc1471"
+intense_mauve = "#9e4aff"
+dimmed_mauve = "#6929b3"
+grey_rpink = "#913158"
+mauve = "#6a60fc"
